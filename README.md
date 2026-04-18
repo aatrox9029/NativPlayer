@@ -33,7 +33,7 @@
 - Settings surfaces for playback, audio, subtitles, shortcuts, and advanced options.
 
 ## Quick Start
-
+- General users can go to [Releases](https://github.com/aatrox9029/NativPlayer/releases) to download either the installer or portable version and start using it right away.
 - `quick_build.bat`
   Builds the latest player EXE and headless test kit with the standard local build flow.
 - `setup.bat`
