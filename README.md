@@ -31,9 +31,6 @@
 - Video, audio, subtitle, playlist, and streaming playback support.
 - Quick browse and playlist-oriented playback workflow.
 - Settings surfaces for playback, audio, subtitles, shortcuts, and advanced options.
-- Missing-`libmpv-2.dll` prompt includes quick language switching for English, Traditional Chinese, and Simplified Chinese.
-- Download-related code paths are restricted to approved HTTPS hosts and bounded payload sizes.
-- Clean release packaging scripts generate the latest EXE, installer, and a single English-default user package.
 
 ## Quick Start
 
