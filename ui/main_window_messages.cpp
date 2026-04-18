@@ -233,11 +233,7 @@ LRESULT MainWindow::HandleCommandMessage(WPARAM wParam, LPARAM lParam) {
         !suppressSeekEvents_ && state_.durationSeconds > 0.0) {
         const int position = seekSlider_.Value();
         const double target = state_.durationSeconds * static_cast<double>(position) / 1000.0;
-        if (seekSlider_.IsDragging() && callbacks_.seekAbsolutePreview != nullptr) {
-            callbacks_.seekAbsolutePreview(target);
-        } else {
-            callbacks_.seekAbsolute(target);
-        }
+        callbacks_.seekAbsolute(target);
         UpdateSeekPreview();
         return 0;
     }

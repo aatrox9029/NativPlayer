@@ -1,0 +1,7 @@
+C:\Users\ivv37\Documents\GitHub\NativPlayer\build-clang\nativplayer.exe
+LastWriteTime=2026-04-19T03:01:46.2010145+08:00
+Length=1875456
+Machine=x64
+HeadlessLastWriteTime=2026-04-19T03:03:10.9427895+08:00
+HeadlessLength=1539072
+HeadlessMachine=x64

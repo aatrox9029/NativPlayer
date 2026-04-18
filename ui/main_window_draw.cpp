@@ -9,11 +9,11 @@ std::wstring_view FullscreenCaptionAssetName(const UINT controlId) {
         case velo::ui::kControlFullscreenDownload:
             return L"download";
         case velo::ui::kControlFullscreenMinimize:
-            return L"\u7e2e\u5c0f";
+            return L"minimize";
         case velo::ui::kControlFullscreenWindowed:
-            return L"\u8996\u7a97\u5316";
+            return L"windowed";
         case velo::ui::kControlFullscreenClose:
-            return L"\u95dc\u9589";
+            return L"close";
         default:
             return {};
     }

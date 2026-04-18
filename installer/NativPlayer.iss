@@ -8,10 +8,6 @@
   #error "PlayerExe is required."
 #endif
 
-#ifndef HeadlessExe
-  #error "HeadlessExe is required."
-#endif
-
 #ifndef ButtonStyleDir
   #error "ButtonStyleDir is required."
 #endif
@@ -72,20 +68,11 @@ Name: "zhCN"; MessagesFile: "compiler:Default.isl,languages\ChineseSimplified.is
 en.DesktopIcon=Create a desktop shortcut
 zhTW.DesktopIcon=建立桌面捷徑
 zhCN.DesktopIcon=建立桌面快捷方式
-en.HeadlessShortcut=Create a Headless Test Kit shortcut
-zhTW.HeadlessShortcut=建立 Headless Test Kit 捷徑
-zhCN.HeadlessShortcut=建立 Headless Test Kit 快捷方式
-en.HeadlessShortcutName=NativPlayer Headless Test Kit
-zhTW.HeadlessShortcutName=NativPlayer Headless Test Kit
-zhCN.HeadlessShortcutName=NativPlayer Headless Test Kit
-
 [Tasks]
 Name: "desktopicon"; Description: "{cm:DesktopIcon}"; Flags: unchecked
-Name: "headlessshortcut"; Description: "{cm:HeadlessShortcut}"; Flags: unchecked
 
 [Files]
 Source: "{#PlayerExe}"; DestDir: "{app}"; DestName: "nativplayer.exe"; Flags: ignoreversion
-Source: "{#HeadlessExe}"; DestDir: "{app}"; DestName: "nativplayer_headless_testkit.exe"; Flags: ignoreversion
 Source: "{#ButtonStyleDir}\*"; DestDir: "{app}\button-style"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#LogoFile}"; DestDir: "{app}"; DestName: "logo.png"; Flags: ignoreversion
 Source: "{#ReadmeEnFile}"; DestDir: "{app}"; DestName: "README.en.md"; Flags: ignoreversion
@@ -94,7 +81,6 @@ Source: "{#ReadmeZhCnFile}"; DestDir: "{app}"; DestName: "README.zh-CN.md"; Flag
 
 [Icons]
 Name: "{group}\NativPlayer"; Filename: "{app}\nativplayer.exe"
-Name: "{group}\{cm:HeadlessShortcutName}"; Filename: "{app}\nativplayer_headless_testkit.exe"; Tasks: headlessshortcut
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\NativPlayer"; Filename: "{app}\nativplayer.exe"; Tasks: desktopicon
 

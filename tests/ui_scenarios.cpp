@@ -64,7 +64,7 @@ void TestButtonVisuals(ScenarioResult& result) {
     velo::ui::PlayerState subtitleOff;
     subtitleOff.subtitleTrackId = -1;
     const auto offVisual = velo::ui::ResolveButtonVisual(velo::ui::ButtonKind::SubtitleTrack, subtitleOff, false, L"zh-TW");
-               Expect(offVisual.imageAsset == L"\u5b57\u5e55", "subtitle off button uses subtitle asset name", result);
+               Expect(offVisual.imageAsset == L"subtitle", "subtitle off button uses subtitle asset name", result);
     Expect(offVisual.badge.empty(), "subtitle button hides off text badge", result);
     Expect(offVisual.warning, "subtitle button turns warning color when disabled", result);
     Expect(!offVisual.largeGlyph, "subtitle button keeps original icon size", result);
@@ -72,7 +72,7 @@ void TestButtonVisuals(ScenarioResult& result) {
     velo::ui::PlayerState subtitleOn;
     subtitleOn.subtitleTrackId = 2;
     const auto onVisual = velo::ui::ResolveButtonVisual(velo::ui::ButtonKind::SubtitleTrack, subtitleOn, false, L"zh-TW");
-       Expect(onVisual.imageAsset == L"\u5b57\u5e55", "subtitle on button uses subtitle asset name", result);
+       Expect(onVisual.imageAsset == L"subtitle", "subtitle on button uses subtitle asset name", result);
     Expect(onVisual.badge.empty(), "subtitle button hides on text badge", result);
     Expect(onVisual.accent, "subtitle button highlights when enabled", result);
 

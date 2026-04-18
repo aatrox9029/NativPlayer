@@ -99,7 +99,7 @@ LRESULT ThemedSlider::HandleMessage(UINT message, WPARAM wParam, LPARAM lParam) 
             }
             if ((wParam & MK_LBUTTON) != 0) {
                 dragging_ = true;
-                SetValue(hoverValue_, true);
+                SetValue(hoverValue_, false);
             }
             TRACKMOUSEEVENT trackMouse{sizeof(TRACKMOUSEEVENT), TME_LEAVE, hwnd_, 0};
             TrackMouseEvent(&trackMouse);
@@ -108,7 +108,9 @@ LRESULT ThemedSlider::HandleMessage(UINT message, WPARAM wParam, LPARAM lParam) 
 
         case WM_MOUSELEAVE:
             hovered_ = false;
-            dragging_ = false;
+            if (GetCapture() != hwnd_) {
+                dragging_ = false;
+            }
             NotifyParent(kNotificationHoverEnded);
             InvalidateRect(hwnd_, nullptr, TRUE);
             return 0;
@@ -119,7 +121,7 @@ LRESULT ThemedSlider::HandleMessage(UINT message, WPARAM wParam, LPARAM lParam) 
             dragging_ = true;
             hoverValue_ = ValueFromPoint(GET_X_LPARAM(lParam));
             NotifyParent(kNotificationHoverChanged);
-            SetValue(hoverValue_, true);
+            SetValue(hoverValue_, false);
             return 0;
 
         case WM_LBUTTONUP:

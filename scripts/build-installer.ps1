@@ -12,7 +12,6 @@ $InstallerDir = Join-Path $Root 'installer'
 $InstallerScript = Join-Path $InstallerDir 'NativPlayer.iss'
 $InstallerOutputDir = Join-Path $BuildDir 'installer'
 $PlayerPrimaryExe = Join-Path $BuildDir 'nativplayer.exe'
-$HeadlessPrimaryExe = Join-Path $BuildDir 'nativplayer_headless_testkit.exe'
 $ButtonStyleDir = Join-Path $BuildDir 'button-style'
 $BuildScript = Join-Path $PSScriptRoot 'build-latest-exe.ps1'
 $LogoFile = Join-Path $Root 'logo.png'
@@ -125,13 +124,11 @@ if ($BuildPlayer) {
 }
 
 $playerExe = Resolve-LatestArtifactPath -PrimaryPath $PlayerPrimaryExe -Pattern 'nativplayer_latest*.exe'
-$headlessExe = Resolve-LatestArtifactPath -PrimaryPath $HeadlessPrimaryExe -Pattern 'nativplayer_headless_testkit_latest*.exe'
 $appVersion = Get-AppVersion -MetadataFile (Join-Path $Root 'app\app_metadata.cpp')
 $isccPath = Resolve-IsccPath -RequestedPath $CompilerPath
 
 Assert-PathExists -Path $InstallerScript -Label 'Installer script'
 Assert-PathExists -Path $playerExe -Label 'Player EXE'
-Assert-PathExists -Path $headlessExe -Label 'Headless Automation Test Kit EXE'
 Assert-PathExists -Path $ButtonStyleDir -Label 'Button style directory'
 Assert-PathExists -Path $LogoFile -Label 'Logo file'
 Assert-PathExists -Path $SetupIconFile -Label 'Setup icon file'
@@ -144,7 +141,6 @@ New-Item -ItemType Directory -Path $InstallerOutputDir -Force | Out-Null
 $defines = @(
     (Convert-ToIsccDefine -Name 'MyAppVersion' -Value $appVersion),
     (Convert-ToIsccDefine -Name 'PlayerExe' -Value $playerExe),
-    (Convert-ToIsccDefine -Name 'HeadlessExe' -Value $headlessExe),
     (Convert-ToIsccDefine -Name 'ButtonStyleDir' -Value $ButtonStyleDir),
     (Convert-ToIsccDefine -Name 'LogoFile' -Value $LogoFile),
     (Convert-ToIsccDefine -Name 'SetupIconFile' -Value $SetupIconFile),

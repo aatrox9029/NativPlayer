@@ -470,12 +470,13 @@ void MpvPlayer::SeekRelative(const double seconds) {
     if (handle_ == nullptr) {
         return;
     }
+    const bool wasPaused = state_.isPaused;
     const std::string amount = std::to_string(seconds);
     const auto seekCommand = BuildLowLatencySeekCommand(SeekCommandType::Relative, !seekOptimizationProfile_.preferKeyframeSeek);
     const char* command[] = {"seek", amount.c_str(), seekCommand.mode.c_str(), nullptr};
     if (ExecuteCommand(command, "seek-relative")) {
         BeginSeekMeasurement("seek-relative");
-        if (seekCommand.resumeAfterSeek) {
+        if (seekCommand.resumeAfterSeek && !wasPaused) {
             ResumePlaybackAfterSeek("seek-relative");
         }
     }
@@ -485,6 +486,7 @@ void MpvPlayer::SeekAbsolute(const double seconds, const bool exact) {
     if (handle_ == nullptr) {
         return;
     }
+    const bool wasPaused = state_.isPaused;
     const std::string amount = std::to_string(seconds);
     const bool exactRequested = exact && !seekOptimizationProfile_.preferKeyframeSeek;
     const auto seekCommand = BuildLowLatencySeekCommand(SeekCommandType::Absolute, exactRequested);
@@ -492,7 +494,7 @@ void MpvPlayer::SeekAbsolute(const double seconds, const bool exact) {
     const char* command[] = {"seek", amount.c_str(), seekCommand.mode.c_str(), nullptr};
     if (ExecuteCommand(command, context)) {
         BeginSeekMeasurement(context);
-        if (seekCommand.resumeAfterSeek) {
+        if (seekCommand.resumeAfterSeek && !wasPaused) {
             ResumePlaybackAfterSeek(context);
         }
     }

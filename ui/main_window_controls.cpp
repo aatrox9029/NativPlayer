@@ -172,12 +172,14 @@ void MainWindow::ApplyStateToControls() {
         InvalidateRect(hwnd_, &titleBounds, FALSE);
     }
 
-    suppressSeekEvents_ = true;
-    const int seekPos = state_.durationSeconds > 0.0
-                            ? static_cast<int>((state_.positionSeconds / state_.durationSeconds) * 1000.0)
-                            : 0;
-    seekSlider_.SetValue(std::clamp(seekPos, 0, 1000));
-    suppressSeekEvents_ = false;
+    if (!seekSlider_.IsDragging()) {
+        suppressSeekEvents_ = true;
+        const int seekPos = state_.durationSeconds > 0.0
+                                ? static_cast<int>((state_.positionSeconds / state_.durationSeconds) * 1000.0)
+                                : 0;
+        seekSlider_.SetValue(std::clamp(seekPos, 0, 1000));
+        suppressSeekEvents_ = false;
+    }
 
     suppressVolumeEvents_ = true;
     const int volumeValue = std::clamp(static_cast<int>(state_.volume), 0, 100);

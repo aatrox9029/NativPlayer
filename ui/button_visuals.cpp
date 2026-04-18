@@ -39,28 +39,28 @@ bool UsesLargeGlyph(const ButtonKind kind) {
 std::wstring ButtonImageAsset(const ButtonKind kind, const PlayerState& state, const bool fullscreen) {
     switch (kind) {
         case ButtonKind::OpenFile:
-            return L"\u958b\u555f\u6a94\u6848";
+            return L"open_file";
         case ButtonKind::QuickBrowse:
-            return L"\u5feb\u901f\u700f\u89bd";
+            return L"quick_browse";
         case ButtonKind::PreviousItem:
-            return L"\u4e0a\u4e00\u90e8";
+            return L"previous_item";
         case ButtonKind::PlayPause:
-            return state.isPaused ? L"\u64a5\u653e" : L"\u66ab\u505c";
+            return state.isPaused ? L"play" : L"pause";
         case ButtonKind::NextPlaybackItem:
         case ButtonKind::NextItem:
-            return L"\u4e0b\u4e00\u90e8";
+            return L"next_item";
         case ButtonKind::Replay:
-            return L"\u64a5\u653e";
+            return L"play";
         case ButtonKind::Mute:
-            return state.isMuted ? L"\u975c\u97f3" : L"\u97f3\u91cf";
+            return state.isMuted ? L"mute" : L"volume";
         case ButtonKind::Speed:
-            return L"\u500d\u901f";
+            return L"speed";
         case ButtonKind::SubtitleTrack:
-            return L"\u5b57\u5e55";
+            return L"subtitle";
         case ButtonKind::Settings:
-            return L"\u8a2d\u5b9a";
+            return L"settings";
         case ButtonKind::Fullscreen:
-            return fullscreen ? L"\u8996\u7a97\u5316" : L"\u5168\u87a2\u5e55";
+            return fullscreen ? L"windowed" : L"fullscreen";
         case ButtonKind::Download:
             return L"download";
         default:
