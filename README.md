@@ -23,6 +23,7 @@
 - Built-in Headless Automation Test Kit for regression checks.
 - Managed runtime flow for `libmpv-2.dll`, including verification before downloaded runtime use.
 - A passive release check can show a download button in the title bar when a newer GitHub release exists.
+- Supports English, Traditional Chinese, and Simplified Chinese.
 
 ## Highlights
 
